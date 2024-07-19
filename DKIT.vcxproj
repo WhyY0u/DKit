@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="src\Render\OpenGL\OpenGL.h" />
     <ClInclude Include="src\Utils\ColorUtils\ColorUtils.h" />
+    <ClInclude Include="src\Utils\MathUtils\MathUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

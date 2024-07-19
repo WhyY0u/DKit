@@ -32,5 +32,8 @@
     <ClInclude Include="src\Utils\ColorUtils\ColorUtils.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="src\Utils\MathUtils\MathUtils.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

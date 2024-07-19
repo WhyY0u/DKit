@@ -23,7 +23,7 @@ void OpenGL::setScreenFrames(bool frames) {
     glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
 }
 void OpenGL::setBackgroundColor(Color color) {
-   
+    glClearColor(color.getNormalizedRed(), color.getNormalizedGreen(), color.getNormalizedBlue(), color.getNormalizedAlpha());
 }
 void OpenGL::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
    glViewport(0, 0, width, height);
