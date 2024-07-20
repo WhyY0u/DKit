@@ -22,11 +22,46 @@ bool OpenGL::init() {
 void OpenGL::setScreenFrames(bool frames) {
     glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
 }
+void OpenGL::setWindowsIcon(std::string path) {
+    int width, height, channels;
+    unsigned char* imgData = stbi_load(path.c_str(), &width, &height, &channels, 4);
+    if (!imgData) {
+        std::cerr << "Failed to load icon image" << std::endl;
+        glfwTerminate();
+        return;
+    }
+
+    GLFWimage images[1];
+    images[0].pixels = imgData;
+    images[0].width = width;
+    images[0].height = height;
+
+    glfwSetWindowIcon(window, 1, images);
+
+    stbi_image_free(imgData);
+}
+void OpenGL::setCallBackMouseMove(std::function<void(double, double)> callback) {
+    mousemove_callback = callback;
+    glfwSetCursorPosCallback(window, [](GLFWwindow* win, double xpos, double ypos) {
+        static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->cursor_position_callback(xpos, ypos);
+        });
+}
+void OpenGL::setCallBackMouseClickedDown(std::function<void(double, double, int)> callback) {
+    mouseClickedDownCallback = callback;
+}
+void OpenGL::setCallBackMouseClickedUp(std::function<void(double, double, int)> callback) {
+    mouseClickedUpCallback = callback;
+}
 void OpenGL::setBackgroundColor(Color color) {
     glClearColor(color.getNormalizedRed(), color.getNormalizedGreen(), color.getNormalizedBlue(), color.getNormalizedAlpha());
 }
 void OpenGL::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
    glViewport(0, 0, width, height);
+}
+void OpenGL::cursor_position_callback(double xpos, double ypos) {
+    if (mousemove_callback) {
+        mousemove_callback(xpos, ypos);
+    }
 }
 int OpenGL::getWidth() {
  return OpenGL::width;
@@ -56,7 +91,7 @@ void OpenGL::createWindow(const std::string& name, const int& width, const int& 
         int windowPosY = (mode->height - height) / 2;
 
         glfwSetWindowPos(window, windowPosX, windowPosY);
-
+        glfwSetWindowUserPointer(window, this);
         glfwMakeContextCurrent(OpenGL::window);
         glfwSetFramebufferSizeCallback(OpenGL::window, OpenGL::framebuffer_size_callback);
 

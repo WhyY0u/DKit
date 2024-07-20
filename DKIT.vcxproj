@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Dissimilate\engine\include\GL;D:\Dissimilate\engine\include\KHR;D:\Dissimilate\engine\include\GLFW;D:\Dissimilate\engine\include\glad;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Dissimilate\engine\include;D:\Dissimilate\engine\include\GL;D:\Dissimilate\engine\include\KHR;D:\Dissimilate\engine\include\GLFW;D:\Dissimilate\engine\include\glad;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Dissimilate\engine\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Dissimilate\engine\include\GL;D:\Dissimilate\engine\include\KHR;D:\Dissimilate\engine\include\GLFW;D:\Dissimilate\engine\include\glad;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Dissimilate\engine\include;D:\Dissimilate\engine\include\GL;D:\Dissimilate\engine\include\KHR;D:\Dissimilate\engine\include\GLFW;D:\Dissimilate\engine\include\glad;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Dissimilate\engine\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,6 +148,7 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Render\OpenGL\OpenGL.cpp" />
     <ClCompile Include="src\Utils\ColorUtils\ColorUtils.cpp" />
+    <ClCompile Include="src\Utils\Image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Render\OpenGL\OpenGL.h" />

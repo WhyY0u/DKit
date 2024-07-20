@@ -17,7 +17,6 @@ Color::Color(int h, int s, int l) {
 }
 Color::Color(float r, float g, float b, float a) : red(r), green(g), blue(b), alpha(a) {}
 
-
 float Color::getRed() const {
 	return red;
 }
