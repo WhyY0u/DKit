@@ -13,14 +13,14 @@ bool OpenGL::init() {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
+        glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
 #ifdef __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
         return true;
     }
 void OpenGL::setScreenFrames(bool frames) {
-    glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
+    glfwSetWindowAttrib(window, GLFW_DECORATED, frames);
 }
 void OpenGL::setWindowsIcon(std::string path) {
     int width, height, channels;
@@ -49,6 +49,20 @@ void OpenGL::setCallBackMouseMove(std::function<void(double, double)> callback) 
 void OpenGL::setCallBackMouseClickedDown(std::function<void(double, double, int)> callback) {
     mouseClickedDownCallback = callback;
 }
+void OpenGL::setCallBackMouseScroll(std::function<void(double, double, double, double)> callback) {
+    mouseScrollCallBack = callback;
+    glfwSetScrollCallback(window, [](GLFWwindow* win, double xoffset, double yoffset) {
+        double mouseX, mouseY;
+        glfwGetCursorPos(win, &mouseX, &mouseY);
+        static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->scroll_callback(xoffset, yoffset, mouseX, mouseY);
+        });
+}
+void OpenGL::setCallBackKeyPressed(std::function<void(int key, int scancode, int action, int mods, const char* name)> callback) {
+    keyPressedCallBack = callback;
+}
+void OpenGL::setCallBackKeyReleased(std::function<void(int key, int scancode, int action, int mods, const char* name)> callback) {
+    keyReleasedCallBack = callback;
+}
 void OpenGL::setCallBackMouseClickedUp(std::function<void(double, double, int)> callback) {
     mouseClickedUpCallback = callback;
 }
@@ -61,6 +75,40 @@ void OpenGL::framebuffer_size_callback(GLFWwindow* window, int width, int height
 void OpenGL::cursor_position_callback(double xpos, double ypos) {
     if (mousemove_callback) {
         mousemove_callback(xpos, ypos);
+    }
+}
+void OpenGL::mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
+    if (action == GLFW_PRESS) {
+        if (mouseClickedDownCallback) {
+            double x, y;
+            glfwGetCursorPos(window, &x, &y);
+            mouseClickedDownCallback(x, y, button);
+        }
+    }
+
+    if (action == GLFW_RELEASE) {
+        if (mouseClickedDownCallback) {
+            double x, y;
+            glfwGetCursorPos(window, &x, &y);
+            mouseClickedUpCallback(x, y, button);
+        }
+    }
+}
+void OpenGL::scroll_callback(double xoffset, double yoffset, double mouseX, double mouseY) {
+    if (mouseScrollCallBack) {
+        mouseScrollCallBack(xoffset, yoffset, mouseX, mouseY);
+    }
+}
+void OpenGL::character_callback(int key, int scancode, int action, int mods, const char* name) {
+    if (action == GLFW_PRESS || action == GLFW_REPEAT) {
+        if (keyPressedCallBack) {
+            keyPressedCallBack(key, scancode, action, mods, name);
+        }
+    }
+    if (action == GLFW_RELEASE) {
+        if (keyReleasedCallBack) {
+            keyReleasedCallBack(key, scancode, action, mods, name);
+        }
     }
 }
 int OpenGL::getWidth() {
@@ -95,6 +143,13 @@ void OpenGL::createWindow(const std::string& name, const int& width, const int& 
         glfwMakeContextCurrent(OpenGL::window);
         glfwSetFramebufferSizeCallback(OpenGL::window, OpenGL::framebuffer_size_callback);
 
+        glfwSetMouseButtonCallback(window, [](GLFWwindow* win, int button, int action, int mods) {
+            static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->mouse_button_callback(win, button, action, mods);
+            });
+        glfwSetKeyCallback(window, [](GLFWwindow* win, int key, int scancode, int action, int mods) {
+            const char* keyName = glfwGetKeyName(key, scancode);
+            static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->character_callback(key, scancode, action, mods, keyName ? keyName : "NULL");
+            });
         if (glewInit() != GLEW_OK) {
             std::cerr << "Failed to initialize GLEW" << std::endl;
             return;
@@ -108,13 +163,13 @@ void OpenGL::destroyWindow() {
     }
 void OpenGL::mainLoop(std::function<void()> callback) {
         while (!glfwWindowShouldClose(OpenGL::window)) {
-            glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-            callback();
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
+
             glfwSwapBuffers(OpenGL::window);
             glfwPollEvents();
         }
-    
 }

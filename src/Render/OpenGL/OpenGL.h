@@ -30,10 +30,15 @@ public:
     void setCallBackMouseMove(std::function<void(double, double)>);
     void setCallBackMouseClickedUp(std::function<void(double, double, int)> callback);
     void setCallBackMouseClickedDown(std::function<void(double, double, int)> callback);
+    void setCallBackMouseScroll(std::function<void(double, double, double, double)> callback);
+    void setCallBackKeyPressed(std::function<void(int key, int scancode, int action, int mods, const char* name)> keyTypedCallBack);
+    void setCallBackKeyReleased(std::function<void(int key, int scancode, int action, int mods, const char* name)> keyTypedCallBack);
     void setBackgroundColor(Color color);
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
     void cursor_position_callback(double xpos, double ypos);
     void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+    void scroll_callback(double xoffset, double yoffset, double mouseX, double mouseY);
+    void character_callback(int key, int scancode, int action, int mods, const char* name);
     int getWidth();
     int getHeight();
     GLFWwindow* getWindow();
@@ -44,6 +49,12 @@ private:
     std::function<void(double, double)> mousemove_callback;
     std::function<void(double, double, int)> mouseClickedDownCallback;
     std::function<void(double, double, int)> mouseClickedUpCallback;
+    std::function<void(double, double, double, double)> mouseScrollCallBack;
+    std::function<void(int key, int scancode, int action, int mods, const char* name)> keyPressedCallBack;
+    std::function<void(int key, int scancode, int action, int mods, const char* name)> keyReleasedCallBack;
+
+
+
 
 };
 	
