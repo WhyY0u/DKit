@@ -146,13 +146,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Render\OpenGL\Element\ShaderHelper.cpp" />
     <ClCompile Include="src\Render\OpenGL\OpenGL.cpp" />
     <ClCompile Include="src\Utils\ColorUtils\ColorUtils.cpp" />
     <ClCompile Include="src\Utils\Image\stb_image.cpp" />
+    <ClCompile Include="src\Utils\KeyBoardUtils\KeyBoardUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Render\OpenGL\Element\ShaderHelper.h" />
     <ClInclude Include="src\Render\OpenGL\OpenGL.h" />
     <ClInclude Include="src\Utils\ColorUtils\ColorUtils.h" />
+    <ClInclude Include="src\Utils\KeyBoardUtils\KeyBoardUtils.h" />
     <ClInclude Include="src\Utils\MathUtils\MathUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

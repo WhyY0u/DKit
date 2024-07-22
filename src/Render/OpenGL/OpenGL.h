@@ -1,10 +1,12 @@
 #pragma once
-#include <glew.h>
+#include <glew.h>    
+#include <glad/glad.h>
 #include <glfw3.h>
 #include <iostream>
 #include <functional>
 #include "../../Utils/ColorUtils/ColorUtils.h"
 #include <stb_image.h>
+#include "../../Utils/KeyBoardUtils/KeyBoardUtils.h"
 
 #ifdef _WIN32
 #ifdef BUILDING_DLL
@@ -33,15 +35,18 @@ public:
     void setCallBackMouseScroll(std::function<void(double, double, double, double)> callback);
     void setCallBackKeyPressed(std::function<void(int key, int scancode, int action, int mods, const char* name)> keyTypedCallBack);
     void setCallBackKeyReleased(std::function<void(int key, int scancode, int action, int mods, const char* name)> keyTypedCallBack);
+    void setCallBackCharacter(std::function<void(std::string ch)> ch);
     void setBackgroundColor(Color color);
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
     void cursor_position_callback(double xpos, double ypos);
     void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
     void scroll_callback(double xoffset, double yoffset, double mouseX, double mouseY);
-    void character_callback(int key, int scancode, int action, int mods, const char* name);
+    void key_callback(int key, int scancode, int action, int mods, const char* name);
+    void character_callback(unsigned int codepoint);
     int getWidth();
     int getHeight();
     GLFWwindow* getWindow();
+    double getFPS();
 
 private:
     GLFWwindow* window;
@@ -52,6 +57,8 @@ private:
     std::function<void(double, double, double, double)> mouseScrollCallBack;
     std::function<void(int key, int scancode, int action, int mods, const char* name)> keyPressedCallBack;
     std::function<void(int key, int scancode, int action, int mods, const char* name)> keyReleasedCallBack;
+    std::function<void(std::string ch)> characterCallback;
+    double fps;
 
 
 

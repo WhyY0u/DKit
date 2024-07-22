@@ -63,6 +63,9 @@ void OpenGL::setCallBackKeyPressed(std::function<void(int key, int scancode, int
 void OpenGL::setCallBackKeyReleased(std::function<void(int key, int scancode, int action, int mods, const char* name)> callback) {
     keyReleasedCallBack = callback;
 }
+void OpenGL::setCallBackCharacter(std::function<void(std::string ch)> ch) {
+    characterCallback = ch;
+}
 void OpenGL::setCallBackMouseClickedUp(std::function<void(double, double, int)> callback) {
     mouseClickedUpCallback = callback;
 }
@@ -99,7 +102,7 @@ void OpenGL::scroll_callback(double xoffset, double yoffset, double mouseX, doub
         mouseScrollCallBack(xoffset, yoffset, mouseX, mouseY);
     }
 }
-void OpenGL::character_callback(int key, int scancode, int action, int mods, const char* name) {
+void OpenGL::key_callback(int key, int scancode, int action, int mods, const char* name) {
     if (action == GLFW_PRESS || action == GLFW_REPEAT) {
         if (keyPressedCallBack) {
             keyPressedCallBack(key, scancode, action, mods, name);
@@ -111,6 +114,11 @@ void OpenGL::character_callback(int key, int scancode, int action, int mods, con
         }
     }
 }
+void OpenGL::character_callback(unsigned int codepoint) {
+    if (characterCallback) {
+        characterCallback(codepoint_to_utf8(codepoint));
+    }
+}
 int OpenGL::getWidth() {
  return OpenGL::width;
 }
@@ -119,6 +127,9 @@ return OpenGL::height;
 }
 GLFWwindow* OpenGL::getWindow() {
 return OpenGL::window;
+}
+double OpenGL::getFPS() {
+    return fps;
 }
 void OpenGL::createWindow(const std::string& name, const int& width, const int& height) {
         if (OpenGL::window) {
@@ -140,18 +151,31 @@ void OpenGL::createWindow(const std::string& name, const int& width, const int& 
 
         glfwSetWindowPos(window, windowPosX, windowPosY);
         glfwSetWindowUserPointer(window, this);
-        glfwMakeContextCurrent(OpenGL::window);
+
         glfwSetFramebufferSizeCallback(OpenGL::window, OpenGL::framebuffer_size_callback);
+
+
+        glfwMakeContextCurrent(OpenGL::window);
 
         glfwSetMouseButtonCallback(window, [](GLFWwindow* win, int button, int action, int mods) {
             static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->mouse_button_callback(win, button, action, mods);
             });
         glfwSetKeyCallback(window, [](GLFWwindow* win, int key, int scancode, int action, int mods) {
             const char* keyName = glfwGetKeyName(key, scancode);
-            static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->character_callback(key, scancode, action, mods, keyName ? keyName : "NULL");
+            static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->key_callback(key, scancode, action, mods, keyName ? keyName : "NULL");
             });
+        glfwSetCharCallback(window, [](GLFWwindow* window, unsigned int codepoint) {
+            static_cast<OpenGL*>(glfwGetWindowUserPointer(window))->character_callback(codepoint);
+            });
+
+        glViewport(0, 0,width, height);
         if (glewInit() != GLEW_OK) {
             std::cerr << "Failed to initialize GLEW" << std::endl;
+            return;
+        }
+
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+            std::cerr << "Failed to initialize GLAD" << std::endl;
             return;
         }
     }
@@ -162,14 +186,23 @@ void OpenGL::destroyWindow() {
         glfwTerminate();
     }
 void OpenGL::mainLoop(std::function<void()> callback) {
+        double lastTime = 0.0;
+        int frameCount = 0;
         while (!glfwWindowShouldClose(OpenGL::window)) {
+            double time = glfwGetTime();
+            double deltaTime = time - lastTime;
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
-
+            callback();
             glfwSwapBuffers(OpenGL::window);
             glfwPollEvents();
+            frameCount++;
+            if (time - lastTime >= 1.0) {
+                fps = frameCount / (time - lastTime);
+                frameCount = 0;
+                lastTime = time;
+            }
         }
 }
