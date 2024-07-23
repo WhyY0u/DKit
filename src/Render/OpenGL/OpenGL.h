@@ -1,12 +1,13 @@
 #pragma once
+#define GLFW_INCLUDE_NONE
 #include <glew.h>    
-#include <glad/glad.h>
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 #include <functional>
 #include "../../Utils/ColorUtils/ColorUtils.h"
 #include <stb_image.h>
 #include "../../Utils/KeyBoardUtils/KeyBoardUtils.h"
+#include "../../Managers/WindowManager.h"
 
 #ifdef _WIN32
 #ifdef BUILDING_DLL
@@ -43,10 +44,15 @@ public:
     void scroll_callback(double xoffset, double yoffset, double mouseX, double mouseY);
     void key_callback(int key, int scancode, int action, int mods, const char* name);
     void character_callback(unsigned int codepoint);
+    void setMaxFPS(int max);
+    void setVSync(bool action);
+    void enableLimitFPS(bool action);
     int getWidth();
     int getHeight();
     GLFWwindow* getWindow();
     double getFPS();
+    int getMaxFPS();
+    
 
 private:
     GLFWwindow* window;
@@ -59,9 +65,9 @@ private:
     std::function<void(int key, int scancode, int action, int mods, const char* name)> keyReleasedCallBack;
     std::function<void(std::string ch)> characterCallback;
     double fps;
-
-
-
+    int maxFPS = 60;
+    bool actionlimitFPS = false;
+    bool actionVSync = true;
 
 };
 	

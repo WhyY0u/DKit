@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Dissimilate\engine\include;D:\Dissimilate\engine\include\GL;D:\Dissimilate\engine\include\KHR;D:\Dissimilate\engine\include\GLFW;D:\Dissimilate\engine\include\glad;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Dissimilate\engine\include;D:\Dissimilate\engine\include\GL;D:\Dissimilate\engine\include\KHR;D:\Dissimilate\engine\include\GLFW;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Dissimilate\engine\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Dissimilate\engine\include;D:\Dissimilate\engine\include\GL;D:\Dissimilate\engine\include\KHR;D:\Dissimilate\engine\include\GLFW;D:\Dissimilate\engine\include\glad;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Dissimilate\engine\include;D:\Dissimilate\engine\include\GL;D:\Dissimilate\engine\include\KHR;D:\Dissimilate\engine\include\GLFW;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Dissimilate\engine\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Managers\WindowManager.cpp" />
     <ClCompile Include="src\Render\OpenGL\Element\ShaderHelper.cpp" />
     <ClCompile Include="src\Render\OpenGL\OpenGL.cpp" />
     <ClCompile Include="src\Utils\ColorUtils\ColorUtils.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="src\Utils\KeyBoardUtils\KeyBoardUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Managers\WindowManager.h" />
     <ClInclude Include="src\Render\OpenGL\Element\ShaderHelper.h" />
     <ClInclude Include="src\Render\OpenGL\OpenGL.h" />
     <ClInclude Include="src\Utils\ColorUtils\ColorUtils.h" />

@@ -1,9 +1,12 @@
 #pragma once
-#include <glad.h>
+#include <glew.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <string>
 #include <vector>
 #include <iostream>
+#include "../../../Managers/WindowManager.h"
 
 struct ShaderInfo {
 	std::string name;
@@ -21,6 +24,16 @@ class Shader {
 public:
 	ShaderInfo getInfo();
 	void initShader();
+    void deleteShader();
+    void updateVector(std::vector<float> v, std::vector<unsigned int> i);
+    void useShader();
+    void startRender();
+    void stopRender();
+    void setUniform1i(const std::string name, int n);
+    void setUniform1f(const std::string name, float n);
+    void setUniform2f(const std::string name, float n, float n2);
+    void setUniform3f(const std::string name, float n, float n2, float n3);
+    void setUniform4f(const std::string name, float n, float n2, float n3, float n4);
 private:
 	ShaderInfo info;
     const bool compileShader(GLuint& shader, GLenum type, const char* source) {
@@ -53,5 +66,4 @@ private:
         }
         return true;
     }
-
 };

@@ -31,12 +31,12 @@ void OpenGL::setWindowsIcon(std::string path) {
         return;
     }
 
-    GLFWimage images[1];
-    images[0].pixels = imgData;
-    images[0].width = width;
-    images[0].height = height;
+    GLFWimage image;
+    image.pixels = imgData;
+    image.width = width;
+    image.height = height;
 
-    glfwSetWindowIcon(window, 1, images);
+    glfwSetWindowIcon(window, 1, &image);
 
     stbi_image_free(imgData);
 }
@@ -74,6 +74,7 @@ void OpenGL::setBackgroundColor(Color color) {
 }
 void OpenGL::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
    glViewport(0, 0, width, height);
+   WindowManager::setScreenSize(width, height);
 }
 void OpenGL::cursor_position_callback(double xpos, double ypos) {
     if (mousemove_callback) {
@@ -119,17 +120,35 @@ void OpenGL::character_callback(unsigned int codepoint) {
         characterCallback(codepoint_to_utf8(codepoint));
     }
 }
+void OpenGL::setMaxFPS(int max) {
+    maxFPS = max;
+}
 int OpenGL::getWidth() {
  return OpenGL::width;
 }
 int OpenGL::getHeight() {
 return OpenGL::height;
 }
+void OpenGL::setVSync(bool action) {
+    if (action != actionVSync) {
+        glfwSwapInterval(action ? 1 : 0);
+        actionVSync = action;
+        if (action) {
+            actionlimitFPS = false;
+        }
+    }
+}
 GLFWwindow* OpenGL::getWindow() {
 return OpenGL::window;
 }
+void OpenGL::enableLimitFPS(bool action) {
+    actionlimitFPS = action;
+}
 double OpenGL::getFPS() {
     return fps;
+}
+int OpenGL::getMaxFPS() {
+    return maxFPS;
 }
 void OpenGL::createWindow(const std::string& name, const int& width, const int& height) {
         if (OpenGL::window) {
@@ -137,6 +156,7 @@ void OpenGL::createWindow(const std::string& name, const int& width, const int& 
         }
         OpenGL::width = width;
         OpenGL::height = height;
+        WindowManager::setScreenSize(width, height);
         OpenGL::window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
         if (!OpenGL::window) {
             std::cerr << "Failed to create GLFW window" << std::endl;
@@ -157,6 +177,11 @@ void OpenGL::createWindow(const std::string& name, const int& width, const int& 
 
         glfwMakeContextCurrent(OpenGL::window);
 
+        if (glewInit() != GLEW_OK) {
+            std::cerr << "Failed to initialize GLEW" << std::endl;
+            return;
+        }
+
         glfwSetMouseButtonCallback(window, [](GLFWwindow* win, int button, int action, int mods) {
             static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->mouse_button_callback(win, button, action, mods);
             });
@@ -169,15 +194,7 @@ void OpenGL::createWindow(const std::string& name, const int& width, const int& 
             });
 
         glViewport(0, 0,width, height);
-        if (glewInit() != GLEW_OK) {
-            std::cerr << "Failed to initialize GLEW" << std::endl;
-            return;
-        }
-
-        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-            std::cerr << "Failed to initialize GLAD" << std::endl;
-            return;
-        }
+       
     }
 void OpenGL::destroyWindow() {
         if (OpenGL::window) {
@@ -186,23 +203,31 @@ void OpenGL::destroyWindow() {
         glfwTerminate();
     }
 void OpenGL::mainLoop(std::function<void()> callback) {
-        double lastTime = 0.0;
-        int frameCount = 0;
-        while (!glfwWindowShouldClose(OpenGL::window)) {
-            double time = glfwGetTime();
-            double deltaTime = time - lastTime;
-            glEnable(GL_BLEND);
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-            glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            callback();
-            glfwSwapBuffers(OpenGL::window);
-            glfwPollEvents();
-            frameCount++;
-            if (time - lastTime >= 1.0) {
-                fps = frameCount / (time - lastTime);
-                frameCount = 0;
-                lastTime = time;
-            }
+    double lastTime = glfwGetTime();
+    int frameCount = 0;
+    double fpsTimer = 0.0;
+    while (!glfwWindowShouldClose(window)) {
+        double targetFrameTime = 1.0 / maxFPS;
+        double currentTime = glfwGetTime();
+        double deltaTime = currentTime - lastTime;
+        glfwPollEvents();
+        if (actionlimitFPS && deltaTime < targetFrameTime) {
+            double sleepTime = (targetFrameTime - deltaTime) * 1000.0; 
+            continue; 
         }
+        lastTime = currentTime;
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        callback();
+        glfwSwapBuffers(window);
+        frameCount++;
+        fpsTimer += deltaTime;
+        if (fpsTimer >= 1.0) {
+            fps = frameCount / fpsTimer;
+            frameCount = 0;
+            fpsTimer = 0.0;
+        }
+    }
 }
