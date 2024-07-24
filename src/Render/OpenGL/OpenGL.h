@@ -7,7 +7,7 @@
 #include "../../Utils/ColorUtils/ColorUtils.h"
 #include <stb_image.h>
 #include "../../Utils/KeyBoardUtils/KeyBoardUtils.h"
-#include "../../Managers/WindowManager.h"
+#include "../../Managers/WindowManager/WindowManager.h"
 
 #ifdef _WIN32
 #ifdef BUILDING_DLL

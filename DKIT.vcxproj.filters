@@ -30,10 +30,13 @@
     <ClCompile Include="src\Utils\KeyBoardUtils\KeyBoardUtils.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Render\OpenGL\Element\ShaderHelper.cpp">
+    <ClCompile Include="src\Render\OpenGL\Shader\ShaderHelper.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Managers\WindowManager.cpp">
+    <ClCompile Include="src\Managers\WindowManager\WindowManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Managers\ElementManager\Square\Square.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,11 +53,18 @@
     <ClInclude Include="src\Utils\KeyBoardUtils\KeyBoardUtils.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Render\OpenGL\Element\ShaderHelper.h">
+    <ClInclude Include="src\Render\OpenGL\Shader\ShaderHelper.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Managers\WindowManager.h">
+    <ClInclude Include="src\Managers\WindowManager\WindowManager.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="src\Managers\ElementManager\Square\Source.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Render\OpenGL\Shader\Vertex\DefaultVertex.vert" />
+    <None Include="src\Render\OpenGL\Shader\Fragment\React.frag" />
   </ItemGroup>
 </Project>

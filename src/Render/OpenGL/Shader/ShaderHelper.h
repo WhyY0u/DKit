@@ -6,11 +6,12 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "../../../Managers/WindowManager.h"
+#include <unordered_map>
+#include <memory> 
+#include "../../../Managers/WindowManager/WindowManager.h"
 
 struct ShaderInfo {
 	std::string name;
-	std::string info;
 	std::string Vertex;
 	std::string Shader;
 	std::vector<float> vectors;
@@ -20,9 +21,11 @@ struct ShaderInfo {
 	GLuint textureID;
 };
 class Shader {
-	
+    Shader(){}
+    Shader(ShaderInfo* info) : info(info){}
 public:
-	ShaderInfo getInfo();
+	ShaderInfo* getInfo();
+    void setShaderInfo(ShaderInfo* i);
 	void initShader();
     void deleteShader();
     void updateVector(std::vector<float> v, std::vector<unsigned int> i);
@@ -35,7 +38,7 @@ public:
     void setUniform3f(const std::string name, float n, float n2, float n3);
     void setUniform4f(const std::string name, float n, float n2, float n3, float n4);
 private:
-	ShaderInfo info;
+	ShaderInfo* info;
     const bool compileShader(GLuint& shader, GLenum type, const char* source) {
         glShaderSource(shader, 1, &source, nullptr);
         glCompileShader(shader);
@@ -67,3 +70,12 @@ private:
         return true;
     }
 };
+
+void setShaderInfo(ShaderInfo& info, std::string name, std::string Vertex, std::string Shader);
+void setShaderInfoVector(ShaderInfo& info, std::vector<float> vectors, std::vector<unsigned int> index);
+static std::unordered_map<std::string, std::unique_ptr<Shader>>& getShaderCache();
+static std::unordered_map<std::string, std::unique_ptr<ShaderInfo>>& getShaderInfoCache();
+
+static Shader* getShader(ShaderInfo* info);
+static ShaderInfo* getShaderInfo(std::string str);
+
