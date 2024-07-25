@@ -1,5 +1,6 @@
 #include "ShaderHelper.h"
 
+
 ShaderInfo* Shader::getInfo() {
 	return info;
 }
@@ -11,7 +12,8 @@ void Shader::initShader() {
     info->FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     const char* vertexShaderSource = info->Vertex.c_str();
     const char* fragmentShaderSource = info->Vertex.c_str();
-
+    std::cout << vertexShaderSource << std::endl;
+    std::cout << fragmentShaderSource << std::endl;
     if (!compileShader(info->VertexShader, GL_VERTEX_SHADER, vertexShaderSource) ||
         !compileShader(info->FragmentShader, GL_FRAGMENT_SHADER, fragmentShaderSource) ||
         !linkProgram(info->ShaderProgram, info->VertexShader, info->FragmentShader)) {
@@ -20,6 +22,7 @@ void Shader::initShader() {
     }
     delete vertexShaderSource;
     delete fragmentShaderSource;
+    
     glDeleteShader(info->VertexShader);
     glDeleteShader(info->FragmentShader);
     glGenVertexArrays(1, &info->VAO);
@@ -46,10 +49,16 @@ void Shader::deleteShader() {
     glDeleteProgram(info->ShaderProgram);
 }
 void Shader::updateVector(std::vector<float> v, std::vector<unsigned int> i) {
-    glBindBuffer(GL_ARRAY_BUFFER, info->VBO);
-    glBufferData(GL_ARRAY_BUFFER, v.size() * sizeof(float), v.data(), GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, info->EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, i.size() * sizeof(int), i.data(), GL_STATIC_DRAW);
+    if (v != info->vectors) {
+        glBindBuffer(GL_ARRAY_BUFFER, info->VBO);
+        glBufferData(GL_ARRAY_BUFFER, v.size() * sizeof(float), v.data(), GL_STATIC_DRAW);
+        info->vectors = v;
+    }
+    if (i != info->index) {
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, info->EBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, i.size() * sizeof(int), i.data(), GL_STATIC_DRAW);
+        info->index = i;
+     }
 }
 void Shader::useShader() {
   glUseProgram(info->ShaderProgram);
@@ -97,28 +106,5 @@ void setShaderInfoVector(ShaderInfo& info, std::vector<float> vectors, std::vect
     info.index = index;
 }
 
-std::unordered_map<std::string, std::unique_ptr<Shader>>& getShaderCache() {
-    static std::unordered_map<std::string, std::unique_ptr<Shader>> shaders;
-    return shaders;
-}
 
-std::unordered_map<std::string, std::unique_ptr<ShaderInfo>>& getShaderInfoCache() {
-    static std::unordered_map<std::string, std::unique_ptr<ShaderInfo>> shaders;
-    return shaders;
-}
 
-Shader* getShader(ShaderInfo* info) {
-    auto& shaders = getShaderCache();
-
-    auto it = shaders.find(info->name);
-    if (it != shaders.end()) {
-        return it->second.get();
-    }
-
-    auto shader = std::make_unique<Shader>();
-    shader->setShaderInfo(info);
-    shader->initShader();
-    shaders[info->name] = std::move(shader);
-
-    return shaders[info->name].get();
-}

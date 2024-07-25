@@ -111,7 +111,7 @@ void Color::setHSL(int h, int s, int l) {
     float lNorm = l / 100.0f;  
 
     float c = (1 - std::abs(2 * lNorm - 1)) * sNorm;  
-    float x = c * (1 - std::abs(std::fmod(hNorm * 6, 2) - 1));  
+    float x = static_cast<float>(c * (1 - std::abs(std::fmod(hNorm * 6, 2) - 1)));  
     float m = lNorm - c / 2;  
 
     float rPrime, gPrime, bPrime;

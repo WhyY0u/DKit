@@ -146,7 +146,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Managers\ElementManager\Square\Square.cpp" />
+    <ClCompile Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.cpp" />
+    <ClCompile Include="src\Managers\ElementManager\Render\Shader\GLSL\Vertex\VertexShader.cpp" />
+    <ClCompile Include="src\Managers\ElementManager\Render\Square\Square.cpp" />
     <ClCompile Include="src\Managers\WindowManager\WindowManager.cpp" />
     <ClCompile Include="src\Render\OpenGL\Shader\ShaderHelper.cpp" />
     <ClCompile Include="src\Render\OpenGL\OpenGL.cpp" />
@@ -155,17 +157,15 @@
     <ClCompile Include="src\Utils\KeyBoardUtils\KeyBoardUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Managers\ElementManager\Square\Source.h" />
+    <ClInclude Include="src\Managers\ElementManager\Render\Square\Square.h" />
     <ClInclude Include="src\Managers\WindowManager\WindowManager.h" />
+    <ClInclude Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.h" />
     <ClInclude Include="src\Render\OpenGL\Shader\ShaderHelper.h" />
     <ClInclude Include="src\Render\OpenGL\OpenGL.h" />
+    <ClInclude Include="src\Managers\ElementManager\Render\Shader\GLSL\Vertex\VertexShader.h" />
     <ClInclude Include="src\Utils\ColorUtils\ColorUtils.h" />
     <ClInclude Include="src\Utils\KeyBoardUtils\KeyBoardUtils.h" />
     <ClInclude Include="src\Utils\MathUtils\MathUtils.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Render\OpenGL\Shader\Fragment\React.frag" />
-    <None Include="src\Render\OpenGL\Shader\Vertex\DefaultVertex.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

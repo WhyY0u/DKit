@@ -36,7 +36,13 @@
     <ClCompile Include="src\Managers\WindowManager\WindowManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Managers\ElementManager\Square\Square.cpp">
+    <ClCompile Include="src\Managers\ElementManager\Render\Square\Square.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Managers\ElementManager\Render\Shader\GLSL\Vertex\VertexShader.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,12 +65,14 @@
     <ClInclude Include="src\Managers\WindowManager\WindowManager.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Managers\ElementManager\Square\Source.h">
+    <ClInclude Include="src\Managers\ElementManager\Render\Square\Square.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Render\OpenGL\Shader\Vertex\DefaultVertex.vert" />
-    <None Include="src\Render\OpenGL\Shader\Fragment\React.frag" />
+    <ClInclude Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Managers\ElementManager\Render\Shader\GLSL\Vertex\VertexShader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

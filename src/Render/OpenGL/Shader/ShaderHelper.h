@@ -21,9 +21,9 @@ struct ShaderInfo {
 	GLuint textureID;
 };
 class Shader {
-    Shader(){}
-    Shader(ShaderInfo* info) : info(info){}
 public:
+    Shader() {};
+    Shader(ShaderInfo* info) : info(info) {}
 	ShaderInfo* getInfo();
     void setShaderInfo(ShaderInfo* i);
 	void initShader();
@@ -73,9 +73,50 @@ private:
 
 void setShaderInfo(ShaderInfo& info, std::string name, std::string Vertex, std::string Shader);
 void setShaderInfoVector(ShaderInfo& info, std::vector<float> vectors, std::vector<unsigned int> index);
-static std::unordered_map<std::string, std::unique_ptr<Shader>>& getShaderCache();
-static std::unordered_map<std::string, std::unique_ptr<ShaderInfo>>& getShaderInfoCache();
 
-static Shader* getShader(ShaderInfo* info);
-static ShaderInfo* getShaderInfo(std::string str);
+static std::unordered_map<std::string, std::unique_ptr<Shader>>& getShaderCache() {
+    static std::unordered_map<std::string, std::unique_ptr<Shader>> shaders;
+    return shaders;
+}
 
+static std::unordered_map<std::string, std::unique_ptr<ShaderInfo>>& getShaderInfoCache() {
+    static std::unordered_map<std::string, std::unique_ptr<ShaderInfo>> shaders;
+    return shaders;
+}
+
+
+static Shader* getShader(ShaderInfo* info) {
+    auto& shaders = getShaderCache();
+
+    auto it = shaders.find(info->name);
+    if (it != shaders.end()) {
+        return it->second.get();
+    }
+
+    auto shader = std::make_unique<Shader>();
+
+    shader->setShaderInfo(info);
+    shader->initShader();
+    shaders[info->name] = std::move(shader);
+
+    return shaders[info->name].get();
+}
+
+static ShaderInfo* getShaderInfo(std::string name, std::string VertexShader, std::string FragmentShader, std::vector<float> vectors, std::vector<unsigned int> index) {
+    auto& infos = getShaderInfoCache();
+
+    auto it = infos.find(name);
+    if (it != infos.end()) {
+        return it->second.get();
+    }
+
+    auto info = std::make_unique<ShaderInfo>();
+    info->name = name;
+    info->Vertex = VertexShader;
+    info->Shader = FragmentShader;
+    info->vectors = vectors;
+    info->index = index;
+    infos[name] = std::move(info);
+
+    return infos[name].get();
+}
