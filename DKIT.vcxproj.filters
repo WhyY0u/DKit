@@ -36,7 +36,7 @@
     <ClCompile Include="src\Managers\WindowManager\WindowManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Managers\ElementManager\Render\Square\Square.cpp">
+    <ClCompile Include="src\Managers\ElementManager\Render\Square\OpenGL\Square.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.cpp">
@@ -65,7 +65,7 @@
     <ClInclude Include="src\Managers\WindowManager\WindowManager.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Managers\ElementManager\Render\Square\Square.h">
+    <ClInclude Include="src\Managers\ElementManager\Render\Square\OpenGL\Square.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.h">

@@ -19,6 +19,7 @@ struct ShaderInfo {
 	GLuint VertexShader, FragmentShader, ShaderProgram;
 	GLuint VAO, VBO, EBO;
 	GLuint textureID;
+    GLuint instanceVBO;
 };
 class Shader {
 public:
@@ -26,6 +27,7 @@ public:
     Shader(ShaderInfo* info) : info(info) {}
 	ShaderInfo* getInfo();
     void setShaderInfo(ShaderInfo* i);
+    void initInstancing();
 	void initShader();
     void deleteShader();
     void updateVector(std::vector<float> v, std::vector<unsigned int> i);
@@ -44,9 +46,9 @@ private:
         glCompileShader(shader);
 
         GLint success;
+        GLchar infoLog[512];
         glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
         if (!success) {
-            GLchar infoLog[512];
             glGetShaderInfoLog(shader, 512, nullptr, infoLog);
             std::cerr << "Shader compilation failed: " << infoLog << std::endl;
             return false;
@@ -60,9 +62,9 @@ private:
         glLinkProgram(programID);
 
         GLint success;
+        GLchar infoLog[512];
         glGetProgramiv(programID, GL_LINK_STATUS, &success);
         if (!success) {
-            GLchar infoLog[512];
             glGetProgramInfoLog(programID, 512, nullptr, infoLog);
             std::cerr << "Shader program linking failed: " << infoLog << std::endl;
             return false;
@@ -107,7 +109,15 @@ static ShaderInfo* getShaderInfo(std::string name, std::string VertexShader, std
 
     auto it = infos.find(name);
     if (it != infos.end()) {
-        return it->second.get();
+        auto& info = it->second;
+        if (info->Vertex != VertexShader || info->Shader != FragmentShader ||
+            info->vectors != vectors || info->index != index) {
+            info->Vertex = VertexShader;
+            info->Shader = FragmentShader;
+            info->vectors = vectors;
+            info->index = index;
+        }
+        return info.get();
     }
 
     auto info = std::make_unique<ShaderInfo>();
@@ -120,3 +130,4 @@ static ShaderInfo* getShaderInfo(std::string name, std::string VertexShader, std
 
     return infos[name].get();
 }
+

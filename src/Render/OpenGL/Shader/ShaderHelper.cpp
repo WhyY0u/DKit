@@ -11,7 +11,7 @@ void Shader::initShader() {
     info->VertexShader = glCreateShader(GL_VERTEX_SHADER);
     info->FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     const char* vertexShaderSource = info->Vertex.c_str();
-    const char* fragmentShaderSource = info->Vertex.c_str();
+    const char* fragmentShaderSource = info->Shader.c_str();
     std::cout << vertexShaderSource << std::endl;
     std::cout << fragmentShaderSource << std::endl;
     if (!compileShader(info->VertexShader, GL_VERTEX_SHADER, vertexShaderSource) ||
@@ -20,11 +20,11 @@ void Shader::initShader() {
         std::cerr << "Shader creation failed!" + info->name << std::endl;
         info->ShaderProgram = 0;
     }
-    delete vertexShaderSource;
-    delete fragmentShaderSource;
-    
+
+
     glDeleteShader(info->VertexShader);
     glDeleteShader(info->FragmentShader);
+
     glGenVertexArrays(1, &info->VAO);
     glGenBuffers(1, &info->VBO);
     glGenBuffers(1, &info->EBO);
@@ -39,6 +39,7 @@ void Shader::initShader() {
     glEnableVertexAttribArray(1);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
 }
 void Shader::deleteShader() {
     glDeleteVertexArrays(1, &info->VAO);
@@ -51,18 +52,18 @@ void Shader::deleteShader() {
 void Shader::updateVector(std::vector<float> v, std::vector<unsigned int> i) {
     if (v != info->vectors) {
         glBindBuffer(GL_ARRAY_BUFFER, info->VBO);
-        glBufferData(GL_ARRAY_BUFFER, v.size() * sizeof(float), v.data(), GL_STATIC_DRAW);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, v.size() * sizeof(float), v.data());
         info->vectors = v;
     }
     if (i != info->index) {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, info->EBO);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, i.size() * sizeof(int), i.data(), GL_STATIC_DRAW);
+        glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, i.size() * sizeof(unsigned int), i.data());
         info->index = i;
-     }
+    }
 }
 void Shader::useShader() {
   glUseProgram(info->ShaderProgram);
-  glm::mat4 projectionMatrix = glm::ortho(0.0f, static_cast<float>(WindowManager::width), static_cast<float>(WindowManager::height), 0.0f, -1.0f, 1.0f);
+  glm::mat4 projectionMatrix = glm::ortho(0.0f, float(WindowManager::width), float(WindowManager::height), 0.0f, -1.0f, 1.0f);
   int projectionLoc = glGetUniformLocation(info->ShaderProgram, "projection");
   glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
 }

@@ -17,6 +17,7 @@ bool OpenGL::init() {
 #ifdef __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
+
         return true;
     }
 void OpenGL::setScreenFrames(bool frames) {
@@ -177,11 +178,13 @@ void OpenGL::createWindow(const std::string& name, const int& width, const int& 
 
         glfwMakeContextCurrent(OpenGL::window);
 
+        glewExperimental = GL_TRUE; 
         if (glewInit() != GLEW_OK) {
             std::cerr << "Failed to initialize GLEW" << std::endl;
             return;
         }
-
+        std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+        std::cout << "GLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
         glfwSetMouseButtonCallback(window, [](GLFWwindow* win, int button, int action, int mods) {
             static_cast<OpenGL*>(glfwGetWindowUserPointer(win))->mouse_button_callback(win, button, action, mods);
             });
@@ -216,10 +219,10 @@ void OpenGL::mainLoop(std::function<void()> callback) {
             continue; 
         }
         lastTime = currentTime;
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         callback();
         glfwSwapBuffers(window);
         frameCount++;

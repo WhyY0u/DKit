@@ -148,7 +148,7 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.cpp" />
     <ClCompile Include="src\Managers\ElementManager\Render\Shader\GLSL\Vertex\VertexShader.cpp" />
-    <ClCompile Include="src\Managers\ElementManager\Render\Square\Square.cpp" />
+    <ClCompile Include="src\Managers\ElementManager\Render\Square\OpenGL\Square.cpp" />
     <ClCompile Include="src\Managers\WindowManager\WindowManager.cpp" />
     <ClCompile Include="src\Render\OpenGL\Shader\ShaderHelper.cpp" />
     <ClCompile Include="src\Render\OpenGL\OpenGL.cpp" />
@@ -157,7 +157,7 @@
     <ClCompile Include="src\Utils\KeyBoardUtils\KeyBoardUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Managers\ElementManager\Render\Square\Square.h" />
+    <ClInclude Include="src\Managers\ElementManager\Render\Square\OpenGL\Square.h" />
     <ClInclude Include="src\Managers\WindowManager\WindowManager.h" />
     <ClInclude Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.h" />
     <ClInclude Include="src\Render\OpenGL\Shader\ShaderHelper.h" />
