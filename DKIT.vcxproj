@@ -157,12 +157,17 @@
     <ClCompile Include="src\Utils\KeyBoardUtils\KeyBoardUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Dkit.h" />
+    <ClInclude Include="src\Managers\ElementManager\ElementManager.h" />
     <ClInclude Include="src\Managers\ElementManager\Render\Square\OpenGL\Square.h" />
     <ClInclude Include="src\Managers\WindowManager\WindowManager.h" />
     <ClInclude Include="src\Managers\ElementManager\Render\Shader\GLSL\Shader\SquareShader.h" />
+    <ClInclude Include="src\Render\DirectX\DirectX.h" />
+    <ClInclude Include="src\Render\Metal\Metal.h" />
     <ClInclude Include="src\Render\OpenGL\Shader\ShaderHelper.h" />
     <ClInclude Include="src\Render\OpenGL\OpenGL.h" />
     <ClInclude Include="src\Managers\ElementManager\Render\Shader\GLSL\Vertex\VertexShader.h" />
+    <ClInclude Include="src\Render\Vulkan\Vulkan.h" />
     <ClInclude Include="src\Utils\ColorUtils\ColorUtils.h" />
     <ClInclude Include="src\Utils\KeyBoardUtils\KeyBoardUtils.h" />
     <ClInclude Include="src\Utils\MathUtils\MathUtils.h" />

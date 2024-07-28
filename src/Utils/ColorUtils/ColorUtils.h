@@ -1,9 +1,13 @@
+#ifndef COLOR_UTILS_H
+#define COLOR_UTILS_H
+
 #include <cmath>
 #include <string>
 #include <iostream>
 #include <sstream>
 #include <algorithm>
 #include "../MathUtils/MathUtils.h"
+
 
 class Color {
 public:
@@ -188,3 +192,4 @@ public:
 private:
 	float red, green, blue, alpha;
 };
+#endif

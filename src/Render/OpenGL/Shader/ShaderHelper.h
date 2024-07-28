@@ -15,7 +15,10 @@ struct ShaderInfo {
 	std::string Vertex;
 	std::string Shader;
 	std::vector<float> vectors;
+    std::vector<float> second_vectors;
 	std::vector<unsigned int> index;
+    std::vector<unsigned int> second_index;
+
 	GLuint VertexShader, FragmentShader, ShaderProgram;
 	GLuint VAO, VBO, EBO;
 	GLuint textureID;
@@ -30,7 +33,7 @@ public:
     void initInstancing();
 	void initShader();
     void deleteShader();
-    void updateVector(std::vector<float> v, std::vector<unsigned int> i);
+    void updateVector();
     void useShader();
     void startRender();
     void stopRender();
@@ -39,8 +42,10 @@ public:
     void setUniform2f(const std::string name, float n, float n2);
     void setUniform3f(const std::string name, float n, float n2, float n3);
     void setUniform4f(const std::string name, float n, float n2, float n3, float n4);
+
 private:
 	ShaderInfo* info;
+    bool init;
     const bool compileShader(GLuint& shader, GLenum type, const char* source) {
         glShaderSource(shader, 1, &source, nullptr);
         glCompileShader(shader);
@@ -72,54 +77,23 @@ private:
         return true;
     }
 };
-
 void setShaderInfo(ShaderInfo& info, std::string name, std::string Vertex, std::string Shader);
 void setShaderInfoVector(ShaderInfo& info, std::vector<float> vectors, std::vector<unsigned int> index);
-
 static std::unordered_map<std::string, std::unique_ptr<Shader>>& getShaderCache() {
     static std::unordered_map<std::string, std::unique_ptr<Shader>> shaders;
     return shaders;
 }
-
 static std::unordered_map<std::string, std::unique_ptr<ShaderInfo>>& getShaderInfoCache() {
     static std::unordered_map<std::string, std::unique_ptr<ShaderInfo>> shaders;
     return shaders;
 }
-
-
-static Shader* getShader(ShaderInfo* info) {
-    auto& shaders = getShaderCache();
-
-    auto it = shaders.find(info->name);
-    if (it != shaders.end()) {
-        return it->second.get();
-    }
-
-    auto shader = std::make_unique<Shader>();
-
-    shader->setShaderInfo(info);
-    shader->initShader();
-    shaders[info->name] = std::move(shader);
-
-    return shaders[info->name].get();
-}
-
 static ShaderInfo* getShaderInfo(std::string name, std::string VertexShader, std::string FragmentShader, std::vector<float> vectors, std::vector<unsigned int> index) {
     auto& infos = getShaderInfoCache();
-
     auto it = infos.find(name);
     if (it != infos.end()) {
         auto& info = it->second;
-        if (info->Vertex != VertexShader || info->Shader != FragmentShader ||
-            info->vectors != vectors || info->index != index) {
-            info->Vertex = VertexShader;
-            info->Shader = FragmentShader;
-            info->vectors = vectors;
-            info->index = index;
-        }
         return info.get();
     }
-
     auto info = std::make_unique<ShaderInfo>();
     info->name = name;
     info->Vertex = VertexShader;
@@ -129,5 +103,17 @@ static ShaderInfo* getShaderInfo(std::string name, std::string VertexShader, std
     infos[name] = std::move(info);
 
     return infos[name].get();
+}
+static Shader* getShader(ShaderInfo* info) {
+    auto& shaders = getShaderCache();
+    auto it = shaders.find(info->name);
+    if (it != shaders.end()) {
+        return it->second.get();
+    }
+    auto shader = std::make_unique<Shader>();
+    shader->setShaderInfo(info);
+    shaders[info->name] = std::move(shader);
+
+    return shaders[info->name].get();
 }
 

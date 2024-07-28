@@ -9,17 +9,8 @@
 #include "../../Utils/KeyBoardUtils/KeyBoardUtils.h"
 #include "../../Managers/WindowManager/WindowManager.h"
 
-#ifdef _WIN32
-#ifdef BUILDING_DLL
-#define DLL_API __declspec(dllexport)
-#else
-#define DLL_API __declspec(dllimport)
-#endif
-#else
-#define DLL_API
-#endif
 
-class DLL_API OpenGL {
+class OpenGL {
 public:
     OpenGL();
     ~OpenGL();
