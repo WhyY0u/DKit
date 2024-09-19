@@ -1,64 +1,56 @@
 #pragma once
-#define GLFW_INCLUDE_NONE
-#include <glew.h>    
-#include <GLFW/glfw3.h>
+
 #include <iostream>
-#include <functional>
-#include "../../Utils/ColorUtils/ColorUtils.h"
-#include <stb_image.h>
-#include "../../Utils/KeyBoardUtils/KeyBoardUtils.h"
-#include "../../Managers/WindowManager/WindowManager.h"
 
 
-class OpenGL {
+#ifdef _WIN32
+#include "glew.h"
+#include "glfw3.h"
+#endif
+
+#ifdef __linux__
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#endif
+
+#include "RenderAPI.h"
+#include "KeyBoardUtils.h"
+#include "WindowManager.h"
+
+class OpenGL : public RenderAPI {
 public:
     OpenGL();
     ~OpenGL();
 
-    bool init();
-    void createWindow(const std::string& name, const int& width, const int& height);
-    void destroyWindow();
-    void mainLoop(std::function<void()> callback);
-    void setScreenFrames(bool frames);
-    void setWindowsIcon(std::string path);
-    void setCallBackMouseMove(std::function<void(double, double)>);
-    void setCallBackMouseClickedUp(std::function<void(double, double, int)> callback);
-    void setCallBackMouseClickedDown(std::function<void(double, double, int)> callback);
-    void setCallBackMouseScroll(std::function<void(double, double, double, double)> callback);
-    void setCallBackKeyPressed(std::function<void(int key, int scancode, int action, int mods, const char* name)> keyTypedCallBack);
-    void setCallBackKeyReleased(std::function<void(int key, int scancode, int action, int mods, const char* name)> keyTypedCallBack);
-    void setCallBackCharacter(std::function<void(std::string ch)> ch);
-    void setBackgroundColor(Color color);
+    void init() override;
+    void createWindow(const std::string& name, const int& width, const int& height) override;
+    void destroyWindow() override;
+    void mainLoop(std::function<void()> callback) override;
+    void setScreenFrames(bool frames) override;
+    void setWindowsIcon(const std::string &path) override;
+    void setCallBackMouseMove(std::function<void(double, double)> callback) override;
+    void setCallBackMouseClickedUp(std::function<void(double, double, int)> callback) override; 
+    void setCallBackMouseClickedDown(std::function<void(double, double, int)> callback) override;
+    void setCallBackMouseScroll(std::function<void(double, double, double, double)> callback) override;
+    void setCallBackKeyPressed(std::function<void(int key, int scancode, int action, int mods, const char* name)> keyTypedCallBack) override;
+    void setCallBackKeyReleased(std::function<void(int key, int scancode, int action, int mods, const char* name)> keyTypedCallBack) override;
+    void setCallBackCharacter(std::function<void(const std::string ch)> ch) override;
+    void setBackgroundColor(Color color) override;
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
     void cursor_position_callback(double xpos, double ypos);
     void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
     void scroll_callback(double xoffset, double yoffset, double mouseX, double mouseY);
     void key_callback(int key, int scancode, int action, int mods, const char* name);
     void character_callback(unsigned int codepoint);
-    void setMaxFPS(int max);
-    void setVSync(bool action);
-    void enableLimitFPS(bool action);
-    int getWidth();
-    int getHeight();
+    void setMaxFPS(int max) override;
+    void setVSync(bool action) override;
+    void enableLimitFPS(bool action) override;
+    int getWidth() override;
+    int getHeight() override;
     GLFWwindow* getWindow();
-    double getFPS();
-    int getMaxFPS();
-    
+    double getFPS() override;
+    int getMaxFPS() override;
 
 private:
     GLFWwindow* window;
-    int width, height;
-    std::function<void(double, double)> mousemove_callback;
-    std::function<void(double, double, int)> mouseClickedDownCallback;
-    std::function<void(double, double, int)> mouseClickedUpCallback;
-    std::function<void(double, double, double, double)> mouseScrollCallBack;
-    std::function<void(int key, int scancode, int action, int mods, const char* name)> keyPressedCallBack;
-    std::function<void(int key, int scancode, int action, int mods, const char* name)> keyReleasedCallBack;
-    std::function<void(std::string ch)> characterCallback;
-    double fps;
-    int maxFPS = 60;
-    bool actionlimitFPS = false;
-    bool actionVSync = true;
-
 };
-	

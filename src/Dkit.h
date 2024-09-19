@@ -1,177 +1,147 @@
 #ifndef DKIT_H
 #define DKIT_H
 
+#include <memory>
 #include <string>
 #include <functional>
-#include "Utils/ColorUtils/ColorUtils.h"
 #include <iostream>
+
+#include "RenderAPI.h"
 #include "Managers/ElementManager/ElementManager.h"
 
-enum class RenderAPI {
+#include "OpenGL.h"
+#include "Vulkan.h"
+#include "DirectX.h"
+#include "Metal.h"
+
+enum class RenderAPIType {
     Vulkan,
     OpenGL,
     DirectX,
     Metal,
 };
-RenderAPI renderApi = RenderAPI::OpenGL;
-#ifdef DKITOpenGL
-#include "Render/OpenGL/OpenGL.h"
-OpenGL opengl = OpenGL();
-#endif
+RenderAPIType renderAPIType = RenderAPIType::OpenGL;
 
-#ifdef DKITVulkan
-#include "Render/Vulkan/Vulkan.h"
-#endif
+RenderAPI* renderAPI;
 
-#ifdef DKITDirectX
-#include "Render/DirectX/DirectX.h"
-#endif
+RenderAPI* createRenderAPI(RenderAPIType type) {
+      switch (type) {
+     case RenderAPIType::Vulkan:
+         return new Vulkan();
+     break;
 
-#ifdef DKITDirectX
-#include "Render/DirectX/DirectX.h"
-#endif
+     case RenderAPIType::OpenGL:
+         return new OpenGL();
+     break;
 
-#ifdef DKITMetal
-#include "Render/DirectX/DirectX.h"
-#endif
+     case RenderAPIType::DirectX:
+         return new DirectX();
+     break;
 
-void startDKIT() {
-    #ifdef DKITOpenGL
-    renderApi = RenderAPI::OpenGL;
+     case RenderAPIType::Metal:
+         return new Metal();
+     break;
+
+     default:
+        return nullptr;
+     break;
+      }
+}
+ 
+void startDKIT(RenderAPIType api) {
+    renderAPIType = api;
+    renderAPI = createRenderAPI(api);
+    if(api == RenderAPIType::OpenGL) {
     std::cout << "Init OpenGL" << std::endl;
-    #endif
+    }
 
-    #ifdef DKITVulkan
-    renderApi = RenderAPI::Vulkan;
+    if(api == RenderAPIType::Vulkan) {
     std::cout << "Init Vulkan" << std::endl;
-    #endif
+    }
 
-    #ifdef DKITDirectX
-    renderApi = RenderAPI::DirectX;
+    if(api == RenderAPIType::DirectX) {
     std::cout << "Init DirectX" << std::endl;
-    #endif
+    }
 
-    #ifdef DKITMetal
-    renderApi = RenderAPI::Metal;
+    if(api == RenderAPIType::Metal) {
     std::cout << "Init Metal" << std::endl;
-    #endif
+    }
+
 }
 void init() {
-#ifdef DKITOpenGL
-    opengl.init();
-#endif
+    renderAPI->init();
 }
 void createWindow(const std::string& name, int width, int height) {
-#ifdef DKITOpenGL
-    opengl.createWindow(name, width, height);
-#endif
+    renderAPI->createWindow(name, width, height);
 }
 void destroyWindow() {
-#ifdef DKITOpenGL
-    opengl.destroyWindow();
-#endif
+   renderAPI->destroyWindow();
 }
 void mainLoop(std::function<void()> callback) {
-#ifdef DKITOpenGL
-    opengl.mainLoop(callback);
-#endif
+   renderAPI->mainLoop(callback);
 }
 void setScreenFrames(bool frames) {
-#ifdef DKITOpenGL
-    opengl.setScreenFrames(frames);
-#endif
+    renderAPI->setScreenFrames(frames);
 }
 void setWindowsIcon(const std::string& path) {
-#ifdef DKITOpenGL
-    opengl.setWindowsIcon(path);
-#endif
+    renderAPI->setWindowsIcon(path);
 }
 void setCallbackMouseMove(std::function<void(double, double)> callback) {
-#ifdef DKITOpenGL
-    opengl.setCallBackMouseMove(callback);
-#endif
+    renderAPI->setCallBackMouseMove(callback);
 }
 void setCallbackMouseClickedUp(std::function<void(double, double, int)> callback) {
-#ifdef DKITOpenGL
-    opengl.setCallBackMouseClickedUp(callback);
-#endif
+    renderAPI->setCallBackMouseClickedUp(callback);
 }
 void setCallbackMouseClickedDown(std::function<void(double, double, int)> callback) {
-#ifdef DKITOpenGL
-    opengl.setCallBackMouseClickedDown(callback);
-#endif
+    renderAPI->setCallBackMouseClickedDown(callback);
 }
 void setCallbackMouseScroll(std::function<void(double, double, double, double)> callback) {
-#ifdef DKITOpenGL
-    opengl.setCallBackMouseScroll(callback);
-#endif
+    renderAPI->setCallBackMouseScroll(callback);
 }
 void setCallbackKeyPressed(std::function<void(int key, int scancode, int action, int mods, const char* name)> callback) {
-#ifdef DKITOpenGL
-    opengl.setCallBackKeyPressed(callback);
-#endif
+    renderAPI->setCallBackKeyPressed(callback);
 }
 void setCallbackKeyReleased(std::function<void(int key, int scancode, int action, int mods, const char* name)> callback) {
-#ifdef DKITOpenGL
-    opengl.setCallBackKeyReleased(callback);
-#endif
+    renderAPI->setCallBackKeyReleased(callback);
 }
 void setCallbackCharacter(std::function<void(const std::string& ch)> callback) {
-#ifdef DKITOpenGL
-    opengl.setCallBackCharacter(callback);
-#endif
+    renderAPI->setCallBackCharacter(callback);
 }
 void setBackgroundColor(Color color) {
-#ifdef DKITOpenGL
-    opengl.setBackgroundColor(color);
-#endif
+    renderAPI->setBackgroundColor(color);
 }
 void setMaxFPS(int max) {
-#ifdef DKITOpenGL
-    opengl.setMaxFPS(max);
-#endif
+    renderAPI->setMaxFPS(max);
 }
 void setVSync(bool action) {
-#ifdef DKITOpenGL
-    opengl.setVSync(action);
-#endif
+    renderAPI->setVSync(action);
 }
 void enableLimitFPS(bool action) {
-#ifdef DKITOpenGL
-    opengl.enableLimitFPS(action);
-#endif
+    renderAPI->enableLimitFPS(action);
 }
 int getWidth() {
-#ifdef DKITOpenGL
-    return opengl.getWidth();
-#endif
+    return renderAPI->getWidth();
 }
 int getHeight() {
-#ifdef DKITOpenGL
-    return opengl.getHeight();
-#endif
+    return renderAPI->getHeight();
 }
 double getFPS() {
-#ifdef DKITOpenGL
-    return opengl.getFPS();
-#endif
+    return renderAPI->getFPS();
 }
 int getMaxFPS() {
-#ifdef DKITOpenGL
-    return opengl.getMaxFPS();
-#endif
+    return renderAPI->getMaxFPS();
 }
-RenderAPI getRenderAPI() {
-    return renderApi;
+RenderAPIType getRenderAPIType() {
+    return renderAPIType;
 }
-std::string getRenderAPIString(RenderAPI api) {
+std::string getRenderAPITypeString(RenderAPIType api) {
     switch (api) {
-    case RenderAPI::Vulkan: return "Vulkan";
-    case RenderAPI::OpenGL: return "OpenGL";
-    case RenderAPI::DirectX: return "DirectX";
-    case RenderAPI::Metal: return "Metal";
+    case RenderAPIType::Vulkan: return "Vulkan";
+    case RenderAPIType::OpenGL: return "OpenGL";
+    case RenderAPIType::DirectX: return "DirectX";
+    case RenderAPIType::Metal: return "Metal";
     default: return "Unknown";
     }
 }
 
-#endif 
+#endif

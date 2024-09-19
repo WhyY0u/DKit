@@ -1,12 +1,11 @@
 #include <iostream>
-#define DKITOpenGL
 #include "Dkit.h"
 void Render();
+
 int main() {
-    startDKIT();
+    startDKIT(RenderAPIType::OpenGL);
     init();
-    createWindow("Iniy By " + getRenderAPIString(getRenderAPI()), 800, 600);
-    setScreenFrames(false);
+    createWindow("Iniy By " + getRenderAPITypeString(getRenderAPIType()), 800, 600);
     enableLimitFPS(false);
     setVSync(false);
     mainLoop(Render);

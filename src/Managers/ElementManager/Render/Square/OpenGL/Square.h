@@ -1,4 +1,6 @@
 #pragma once
+#ifndef SQUARE_H
+#define SQUARE_H
 
 #include <vector>
 #include <string>
@@ -13,3 +15,4 @@ namespace SquareOpenGL {
 
 	void drawSquare(float x, float y, float width, float height, Color color);
 }
+#endif

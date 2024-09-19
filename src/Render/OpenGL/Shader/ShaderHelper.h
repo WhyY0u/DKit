@@ -1,5 +1,15 @@
 #pragma once
-#include <glew.h>
+#ifndef SHADERHELPER_H
+#define SHADERHELPER_H
+
+#ifdef _WIN32
+#include "glew.h"
+#endif
+
+#ifdef __linux__
+#include <GL/glew.h>
+#endif
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -117,3 +127,4 @@ static Shader* getShader(ShaderInfo* info) {
     return shaders[info->name].get();
 }
 
+#endif

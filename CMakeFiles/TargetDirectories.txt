@@ -1,0 +1,3 @@
+/home/whyy0u/Desktop/DIssimilate/DKit/DKit/CMakeFiles/DKit.dir
+/home/whyy0u/Desktop/DIssimilate/DKit/DKit/CMakeFiles/edit_cache.dir
+/home/whyy0u/Desktop/DIssimilate/DKit/DKit/CMakeFiles/rebuild_cache.dir

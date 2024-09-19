@@ -1,14 +1,14 @@
 #include <iostream>
 #include "OpenGL.h"
 
-OpenGL::OpenGL() : window(nullptr), width(0), height(0) {}
+OpenGL::OpenGL() : window(nullptr) {}
 OpenGL::~OpenGL() {
     destroyWindow();
 }
-bool OpenGL::init() {
+void OpenGL::init() {
         if (!glfwInit()) {
             std::cerr << "Failed to initialize GLFW" << std::endl;
-            return false;
+            return;
         }
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -17,13 +17,11 @@ bool OpenGL::init() {
 #ifdef __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
-
-        return true;
     }
 void OpenGL::setScreenFrames(bool frames) {
     glfwSetWindowAttrib(window, GLFW_DECORATED, frames);
 }
-void OpenGL::setWindowsIcon(std::string path) {
+void OpenGL::setWindowsIcon(const std::string &path) {
     int width, height, channels;
     unsigned char* imgData = stbi_load(path.c_str(), &width, &height, &channels, 4);
     if (!imgData) {
@@ -48,7 +46,7 @@ void OpenGL::setCallBackMouseMove(std::function<void(double, double)> callback) 
         });
 }
 void OpenGL::setCallBackMouseClickedDown(std::function<void(double, double, int)> callback) {
-    mouseClickedDownCallback = callback;
+   RenderAPI::setCallBackMouseClickedDown(callback);
 }
 void OpenGL::setCallBackMouseScroll(std::function<void(double, double, double, double)> callback) {
     mouseScrollCallBack = callback;
@@ -59,16 +57,16 @@ void OpenGL::setCallBackMouseScroll(std::function<void(double, double, double, d
         });
 }
 void OpenGL::setCallBackKeyPressed(std::function<void(int key, int scancode, int action, int mods, const char* name)> callback) {
-    keyPressedCallBack = callback;
+    RenderAPI::setCallBackKeyPressed(callback);
 }
 void OpenGL::setCallBackKeyReleased(std::function<void(int key, int scancode, int action, int mods, const char* name)> callback) {
-    keyReleasedCallBack = callback;
+    RenderAPI::setCallBackKeyReleased(callback);
 }
 void OpenGL::setCallBackCharacter(std::function<void(std::string ch)> ch) {
-    characterCallback = ch;
+    RenderAPI::setCallBackCharacter(ch);
 }
 void OpenGL::setCallBackMouseClickedUp(std::function<void(double, double, int)> callback) {
-    mouseClickedUpCallback = callback;
+    RenderAPI::setCallBackMouseClickedUp(callback);
 }
 void OpenGL::setBackgroundColor(Color color) {
     glClearColor(color.getNormalizedRed(), color.getNormalizedGreen(), color.getNormalizedBlue(), color.getNormalizedAlpha());
@@ -122,13 +120,13 @@ void OpenGL::character_callback(unsigned int codepoint) {
     }
 }
 void OpenGL::setMaxFPS(int max) {
-    maxFPS = max;
+    RenderAPI::setMaxFPS(max);
 }
 int OpenGL::getWidth() {
- return OpenGL::width;
+ return RenderAPI::width;
 }
 int OpenGL::getHeight() {
-return OpenGL::height;
+return RenderAPI::height;
 }
 void OpenGL::setVSync(bool action) {
     if (action != actionVSync) {
@@ -143,13 +141,13 @@ GLFWwindow* OpenGL::getWindow() {
 return OpenGL::window;
 }
 void OpenGL::enableLimitFPS(bool action) {
-    actionlimitFPS = action;
+    RenderAPI::enableLimitFPS(action);
 }
 double OpenGL::getFPS() {
-    return fps;
+    return RenderAPI::getFPS();
 }
 int OpenGL::getMaxFPS() {
-    return maxFPS;
+    return RenderAPI::getMaxFPS();
 }
 void OpenGL::createWindow(const std::string& name, const int& width, const int& height) {
         if (OpenGL::window) {
