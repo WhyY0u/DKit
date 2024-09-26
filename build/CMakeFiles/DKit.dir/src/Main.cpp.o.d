@@ -159,6 +159,7 @@ CMakeFiles/DKit.dir/src/Main.cpp.o: \
  /usr/include/c++/14/bits/align.h \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/include/c++/14/bits/unique_ptr.h \
  /usr/include/c++/14/bits/shared_ptr.h \
  /usr/include/c++/14/bits/shared_ptr_base.h \
@@ -232,5 +233,21 @@ CMakeFiles/DKit.dir/src/Main.cpp.o: \
  /usr/include/c++/14/bits/quoted_string.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/WindowManager/WindowManager.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/Vulkan/Vulkan.h \
+ /usr/include/vulkan/vulkan.h /usr/include/vulkan/vk_platform.h \
+ /usr/include/vulkan/vulkan_core.h \
+ /usr/include/vk_video/vulkan_video_codec_h264std.h \
+ /usr/include/vk_video/vulkan_video_codecs_common.h \
+ /usr/include/vk_video/vulkan_video_codec_h264std_encode.h \
+ /usr/include/vk_video/vulkan_video_codec_h264std.h \
+ /usr/include/vk_video/vulkan_video_codec_h265std.h \
+ /usr/include/vk_video/vulkan_video_codec_h265std_encode.h \
+ /usr/include/vk_video/vulkan_video_codec_h265std.h \
+ /usr/include/vk_video/vulkan_video_codec_h264std_decode.h \
+ /usr/include/vk_video/vulkan_video_codec_h265std_decode.h \
+ /usr/include/vk_video/vulkan_video_codec_av1std.h \
+ /usr/include/vk_video/vulkan_video_codec_av1std_decode.h \
+ /usr/include/vk_video/vulkan_video_codec_av1std.h \
+ /usr/include/c++/14/cstring /usr/include/string.h /usr/include/strings.h \
+ /usr/include/c++/14/optional \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/DirectX/DirectX.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/Metal/Metal.h

@@ -23,7 +23,8 @@ CMakeFiles/DKit.dir/src/Render/OpenGL/Shader/ShaderHelper.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/time64.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/GL/glu.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h /usr/include/GL/glu.h \
  /usr/include/GL/gl.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/glm.hpp \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/_fixes.hpp \

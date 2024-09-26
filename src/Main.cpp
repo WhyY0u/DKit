@@ -3,7 +3,7 @@
 void Render();
 
 int main() {
-    startDKIT(RenderAPIType::OpenGL);
+    startDKIT(RenderAPIType::Vulkan);
     init();
     createWindow("Iniy By " + getRenderAPITypeString(getRenderAPIType()), 800, 600);
     enableLimitFPS(false);

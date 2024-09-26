@@ -155,7 +155,8 @@ CMakeFiles/DKit.dir/src/Render/OpenGL/OpenGL.cpp.o: \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/OpenGL/OpenGL.h \
  /usr/include/GL/glew.h /usr/include/c++/14/cstdint \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/GL/glu.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h /usr/include/GL/glu.h \
  /usr/include/GL/gl.h /usr/include/GLFW/glfw3.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/RenderAPI.h \
  /usr/include/c++/14/functional /usr/include/c++/14/bits/std_function.h \

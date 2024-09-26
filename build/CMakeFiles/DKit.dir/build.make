@@ -301,9 +301,10 @@ DKit: CMakeFiles/DKit.dir/src/Utils/KeyBoardUtils/KeyBoardUtils.cpp.o
 DKit: CMakeFiles/DKit.dir/src/Main.cpp.o
 DKit: CMakeFiles/DKit.dir/build.make
 DKit: /usr/lib/x86_64-linux-gnu/libGLEW.so
-DKit: /usr/lib/x86_64-linux-gnu/libGL.so
+DKit: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+DKit: /usr/lib/x86_64-linux-gnu/libGLX.so
 DKit: /usr/lib/x86_64-linux-gnu/libGLU.so
-DKit: /usr/lib/x86_64-linux-gnu/libglfw.so.3.4
+DKit: /usr/lib/x86_64-linux-gnu/libvulkan.so
 DKit: CMakeFiles/DKit.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/whyy0u/Desktop/DIssimilate/DKit/DKit/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable DKit"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DKit.dir/link.txt --verbose=$(VERBOSE)
