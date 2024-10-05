@@ -3,7 +3,7 @@
 void Render();
 
 int main() {
-    startDKIT(RenderAPIType::Vulkan);
+    startDKIT(RenderAPIType::OpenGL);
     init();
     createWindow("Iniy By " + getRenderAPITypeString(getRenderAPIType()), 800, 600);
     enableLimitFPS(false);
@@ -14,5 +14,6 @@ int main() {
 
 void Render() {
     std::cout << getFPS() << std::endl;
+    drawSquare(10,100, 100,100, Color(255.0f, 255.0f, 255.0f));
 }
 

@@ -84,7 +84,6 @@ QueueFamilyIndices Vulkan::findQueueFamilies(VkPhysicalDevice device) {
 void Vulkan::pickPhysicalDevice() {
        uint32_t deviceCount = 0;
         vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
-
         if (deviceCount == 0) {
             throw std::runtime_error("failed to find GPUs with Vulkan support!");
         }
@@ -94,6 +93,7 @@ void Vulkan::pickPhysicalDevice() {
 
         for (const auto& device : devices) {
             if (isDeviceSuitable(device)) {
+                std::cout << "Количество доступных устройств: " << deviceCount << std::endl;
                 physicalDevice = device;
                 break;
             }
@@ -102,6 +102,7 @@ void Vulkan::pickPhysicalDevice() {
         if (physicalDevice == VK_NULL_HANDLE) {
             throw std::runtime_error("failed to find a suitable GPU!");
         }
+
 }
 void Vulkan::setupDebugMessenger() {
  if (!enableValidationLayers) return;
@@ -199,14 +200,12 @@ bool Vulkan::checkValidationLayerSupport() {
 
     return true;
 }
-
 void Vulkan::init() {
     RenderAPI::init();
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 }
-
 void Vulkan::createWindow(const std::string &name, const int &width, const int &height){
     window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
     if (!window) {
@@ -225,7 +224,6 @@ void Vulkan::createWindow(const std::string &name, const int &width, const int &
     glfwSetWindowUserPointer(window, this);
    
 }
-
 void Vulkan::destroyWindow() {
     vkDestroyDevice(device, nullptr);
     if (enableValidationLayers) {
@@ -236,7 +234,6 @@ void Vulkan::destroyWindow() {
     glfwDestroyWindow(window);
     glfwTerminate();
 }
-
 void Vulkan::mainLoop(std::function<void()> callback) {
         
     while (!glfwWindowShouldClose(window)) {
@@ -245,7 +242,6 @@ void Vulkan::mainLoop(std::function<void()> callback) {
     
     }
 }
-
 void Vulkan::setScreenFrames(bool frames) {
 
 }

@@ -43,7 +43,7 @@ RenderAPI* createRenderAPI(RenderAPIType type) {
      break;
 
      default:
-        return nullptr;
+        return new OpenGL();
      break;
       }
 }

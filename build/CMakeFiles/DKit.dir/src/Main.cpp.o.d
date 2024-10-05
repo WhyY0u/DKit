@@ -219,9 +219,220 @@ CMakeFiles/DKit.dir/src/Main.cpp.o: \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/stb_image.h \
  /usr/include/c++/14/stdlib.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/ElementManager/ElementManager.h \
- /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/OpenGL/OpenGL.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/ElementManager/Render/Square/OpenGL/Square.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/ElementManager/Render/Square/OpenGL/../../../../../Render/OpenGL/Shader/ShaderHelper.h \
  /usr/include/GL/glew.h /usr/include/c++/14/cstdint /usr/include/GL/glu.h \
- /usr/include/GL/gl.h /usr/include/GLFW/glfw3.h \
+ /usr/include/GL/gl.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/glm.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/_fixes.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/setup.hpp \
+ /usr/include/c++/14/cassert /usr/include/assert.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/../simd/platform.h \
+ /usr/include/c++/14/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/14/cfloat \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/float.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/fwd.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/qualifier.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/vec2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_bool2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/type_vec2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/type_vec2.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/./compute_vector_relational.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/./setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_bool2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_float2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_float2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_double2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_double2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_int2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_int2_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../ext/scalar_int_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../ext/../detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_uint2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_uint2_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../ext/scalar_uint_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/vec3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_bool3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/type_vec3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/type_vec3.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_bool3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_float3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_float3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_double3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_double3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_int3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_int3_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_uint3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_uint3_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/vec4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_bool4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/type_vec4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/type_vec4.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_bool4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_float4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_float4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_double4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_double4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_int4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_int4_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_uint4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/vector_uint4_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/mat2x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/matrix_double2x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/type_mat2x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/type_mat2x2.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../matrix.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../mat2x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../mat2x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../mat3x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../mat3x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../mat3x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../mat4x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../mat4x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../mat4x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/func_matrix.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../geometric.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/func_geometric.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../exponential.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/func_exponential.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/../vector_relational.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/../detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/../detail/func_vector_relational.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/_vectorize.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../common.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/_fixes.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/func_common.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/compute_common.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/../detail/../detail/../detail/../detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/matrix_double2x2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/matrix_float2x2.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/./ext/matrix_float2x2_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/trigonometric.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/func_trigonometric.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/packing.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/func_packing.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/type_half.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/type_half.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/integer.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/detail/func_integer.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/matrix_transform.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/matrix_projection.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/../gtc/constants.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/../gtc/constants.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/matrix_projection.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/matrix_clip_space.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/matrix_clip_space.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/matrix_transform.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../ext/matrix_transform.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/matrix_transform.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/type_ptr.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/quaternion.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_relational.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_relational.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/../detail/type_float.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/../detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_common.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_common.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_float.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/../detail/type_quat.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_double.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_transform.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/quaternion_transform.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/quaternion.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/epsilon.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../detail/setup.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/epsilon.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/vec1.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_bool1.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_float1.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_double1.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_int1.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_uint1.hpp \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
+ /usr/include/c++/14/cstring /usr/include/string.h /usr/include/strings.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/include/CrossPlatform/glm/gtc/type_ptr.inl \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/ElementManager/Render/Square/OpenGL/../../../../../Render/OpenGL/Shader/../../../Managers/WindowManager/WindowManager.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/ElementManager/Render/Square/OpenGL/../../Shader/GLSL/Shader/SquareShader.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/ElementManager/Render/Square/OpenGL/../../Shader/GLSL/Vertex/VertexShader.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/ElementManager/Render/Square/OpenGL/../../../../../Utils/ColorUtils/ColorUtils.h \
+ /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/OpenGL/OpenGL.h \
+ /usr/include/GLFW/glfw3.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Utils/KeyBoardUtils/KeyBoardUtils.h \
  /usr/include/c++/14/iomanip /usr/include/c++/14/locale \
  /usr/include/c++/14/bits/locale_facets_nonio.h /usr/include/c++/14/ctime \
@@ -231,7 +442,6 @@ CMakeFiles/DKit.dir/src/Main.cpp.o: \
  /usr/include/c++/14/bits/locale_facets_nonio.tcc \
  /usr/include/c++/14/bits/locale_conv.h \
  /usr/include/c++/14/bits/quoted_string.h \
- /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Managers/WindowManager/WindowManager.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/Vulkan/Vulkan.h \
  /usr/include/vulkan/vulkan.h /usr/include/vulkan/vk_platform.h \
  /usr/include/vulkan/vulkan_core.h \
@@ -247,7 +457,8 @@ CMakeFiles/DKit.dir/src/Main.cpp.o: \
  /usr/include/vk_video/vulkan_video_codec_av1std.h \
  /usr/include/vk_video/vulkan_video_codec_av1std_decode.h \
  /usr/include/vk_video/vulkan_video_codec_av1std.h \
- /usr/include/c++/14/cstring /usr/include/string.h /usr/include/strings.h \
- /usr/include/c++/14/optional \
+ /usr/include/c++/14/optional /usr/include/c++/14/set \
+ /usr/include/c++/14/bits/stl_tree.h /usr/include/c++/14/bits/stl_set.h \
+ /usr/include/c++/14/bits/stl_multiset.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/DirectX/DirectX.h \
  /home/whyy0u/Desktop/DIssimilate/DKit/DKit/src/Render/Metal/Metal.h

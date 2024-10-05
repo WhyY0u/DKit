@@ -63,7 +63,9 @@
         "semaphore": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "__nullptr": "cpp"
+        "__nullptr": "cpp",
+        "set": "cpp",
+        "__config": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
